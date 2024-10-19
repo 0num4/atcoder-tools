@@ -1,4 +1,11 @@
 # Change Log
+
+## 2.14.1 / 2024-10-19
+Release version 2.14.1
+* llmがどうたらみたいな記述を削除
+* markupsafeを直接入れるように
+* 小文字で生成するように
+
 ## 2.14.0 / 2024-6-7
 Release version 2.14.0
 |PR|Change Summary|Label|Author|
