@@ -218,16 +218,6 @@ def predict_is_format_analysis_allowed_by_rule(html: str) -> bool:
         raise FailingToKnowFormatAnalysisAllowedByRuleError(
             "No meta tag detected, which is important as a clue to know if the input analysis is allowed.")
 
-    # ABC is the target of "No LLM rules" by AtCoder (See https://info.atcoder.jp/entry/llm-abc-rules-ja or https://info.atcoder.jp/entry/llm-abc-rules-en)
-    is_target_contest_of_no_llm_rule = "/contests/abc" in url_meta_tag["content"]
-
-    # If there is no virtual standings link, assume it's ongoing.
-    is_ongoing_contest = len([tag for tag in soup.find_all(
-        "a") if "/standings/virtual" in tag.get("href", "")]) == 0
-
-    if is_target_contest_of_no_llm_rule and is_ongoing_contest:
-        return False
-
     return True
 
 
