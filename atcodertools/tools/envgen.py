@@ -58,7 +58,7 @@ def prepare_procedure(atcoder_client: AtCoderClient,
     problem_dir_path = os.path.join(
         workspace_root_path,
         problem.get_contest().get_id(),
-        pid)
+        pid.lower())
 
     def emit_error(text):
         logger.error(with_color("Problem {}: {}".format(pid, text), Fore.RED))
@@ -296,6 +296,8 @@ def main(prog, args):
                             "[Default (Secondary)] {}\n".format(
                                 get_default_config_path()))
                         )
+    
+    parser.add_argument("--case",help="ディレクトリを作る時に小文字にする", default=None)
 
     args = parser.parse_args(args)
 
