@@ -5,6 +5,7 @@ import shutil
 import sys
 import traceback
 from multiprocessing import Pool, cpu_count
+import subprocess
 import time
 from typing import Tuple
 
@@ -148,9 +149,12 @@ def prepare_procedure(atcoder_client: AtCoderClient,
     emit_info("Saved code to {}".format(code_file_path))
 
     p = problem.get_alphabet().lower()+".py"
-
     # create empty file for alphabet
     open(os.path.join(problem_dir_path, p), 'w').close()
+
+    emit_info("current directory: " + problem_dir_path)
+    # ojdlも走らせる
+    subprocess.run(["oj", "donwnload", problem.url], cwd=problem_dir_path)
 
     # Save metadata
     metadata_path = os.path.join(problem_dir_path, "metadata.json")
