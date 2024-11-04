@@ -95,13 +95,6 @@ def main(prog, args) -> None:
                 a = ["--lang", output_metadata.lang.name, url]
                 if args.without_login:
                     a.append("--without-login")
-                logger.info(f"Generating {output_metadata.lang.name} code...")
-                logger.info(f"{main_code_filename=}")
-                logger.info(f"{output_metadata.problem.problem_id=}")
-                logger.info(f"{output_metadata.problem.contest.contest_id=}")
-                logger.info(f"{output_metadata.problem.alphabet=}")
-                # alphabetの空のファイルを作成
-                open(os.path.join(args.dir, output_metadata.problem.alphabet), 'w').close()
 
                 codegen_main("", a, open(main_code_filename, 'w'))
             else:

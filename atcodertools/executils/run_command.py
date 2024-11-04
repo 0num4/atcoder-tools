@@ -1,12 +1,7 @@
 import subprocess
 import locale
-from logging import getLogger
-
-logger = getLogger(__name__)
-
 
 def run_command(exec_cmd: str, current_working_dir: str) -> str:
-    logger.info("Running command: " + exec_cmd)
     proc = subprocess.run(exec_cmd,
                           shell=True,
                           stdout=subprocess.PIPE,
