@@ -51,6 +51,7 @@ def main(prog, args) -> None:
     args = parser.parse_args(args)
 
     old_metadata = Metadata.load_from(os.path.join(args.dir, "metadata.json"))
+    logger.info("current directory: " + args.dir)
 
     # Use the old metadata as base metadata.
     output_metadata = Metadata.load_from(
@@ -72,7 +73,7 @@ def main(prog, args) -> None:
         elif new_metadata_judge_type == JudgeType.Decimal.value:
             output_metadata.judge_method = DecimalJudge()
             if args.error_value is None:
-                logger.warn(
+                logger.warning(
                     "Error-value is not specified. DEFAULT_EPS is set")
                 output_metadata.judge_method.diff = DEFAULT_EPS
         else:
@@ -94,11 +95,11 @@ def main(prog, args) -> None:
                 a = ["--lang", output_metadata.lang.name, url]
                 if args.without_login:
                     a.append("--without-login")
-                print(f"Generating {output_metadata.lang.name} code...")
-                print(f"{main_code_filename=}")
-                print(f"{output_metadata.problem.problem_id=}")
-                print(f"{output_metadata.problem.contest.contest_id=}")
-                print(f"{output_metadata.problem.alphabet=}")
+                logger.info(f"Generating {output_metadata.lang.name} code...")
+                logger.info(f"{main_code_filename=}")
+                logger.info(f"{output_metadata.problem.problem_id=}")
+                logger.info(f"{output_metadata.problem.contest.contest_id=}")
+                logger.info(f"{output_metadata.problem.alphabet=}")
                 # alphabetの空のファイルを作成
                 open(os.path.join(args.dir, output_metadata.problem.alphabet), 'w').close()
 

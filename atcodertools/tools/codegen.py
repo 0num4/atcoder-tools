@@ -179,6 +179,7 @@ def main(prog, args, output_file=sys.stdout):
     else:
         logger.info("Downloading data without login.")
 
+    logger.info("hello i am codegen and current directory is " + os.getcwd())
     generate_code(client,
                   args.url,
                   config,
