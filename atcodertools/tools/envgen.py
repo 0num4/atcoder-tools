@@ -154,7 +154,7 @@ def prepare_procedure(atcoder_client: AtCoderClient,
 
     emit_info("current directory: " + problem_dir_path)
     # ojdlも走らせる
-    subprocess.run(["oj", "donwnload", problem.url], cwd=problem_dir_path)
+    subprocess.run(["oj", "donwnload", problem.get_url()], cwd=problem_dir_path)
 
     # Save metadata
     metadata_path = os.path.join(problem_dir_path, "metadata.json")
