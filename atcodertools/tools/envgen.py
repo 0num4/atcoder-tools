@@ -147,6 +147,13 @@ def prepare_procedure(atcoder_client: AtCoderClient,
         code_file_path)
     emit_info("Saved code to {}".format(code_file_path))
 
+    logger.info("Creating alphabet file" + problem.get_alphabet())
+    logger.info("Creating alphabet file" + os.path.join(problem_dir_path, problem.get_alphabet()))
+
+    # create empty file for alphabet
+    open(os.path.join(problem_dir_path, problem.get_alphabet()), 'w').close()
+    logger.info("Creating alphabet file" + problem.get_contest().get_id())
+
     # Save metadata
     metadata_path = os.path.join(problem_dir_path, "metadata.json")
     Metadata(problem,
